@@ -631,6 +631,12 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     
     CGRect orientationFrame = self.bounds;
 
+    #if !defined(SV_APP_EXTENSIONS) && TARGET_OS_IOS
+    CGRect statusBarFrame = UIApplication.sharedApplication.statusBarFrame;
+#else
+    CGRect statusBarFrame = CGRectZero;
+#endif
+
     if (_motionEffectEnabled) {
 #if TARGET_OS_IOS
         [self updateMotionEffectForOrientation:orientation];
