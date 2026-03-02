@@ -640,6 +640,11 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     }
     
     CGFloat activeHeight = CGRectGetHeight(orientationFrame);
+    
+    if (keyboardHeight > 0) {
+        activeHeight += CGRectGetHeight(statusBarFrame) * 2;
+    }
+
     activeHeight -= keyboardHeight;
     
     CGFloat posX = CGRectGetMidX(orientationFrame);
